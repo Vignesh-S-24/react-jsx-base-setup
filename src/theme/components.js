@@ -1,5 +1,4 @@
-// NDE Mail style guide: radii sm 4 / md 8 / lg 12 / xl 16, fields 36px (large 44px),
-// buttons 9px 18px / 600, signal-coloured messages.
+
 const components = {
   MuiCssBaseline: {
     styleOverrides: {

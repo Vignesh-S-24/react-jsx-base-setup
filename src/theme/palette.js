@@ -66,6 +66,11 @@ export const lightPalette = {
     disabledBackground: "rgba(0, 0, 0, 0.12)",
     focus: "rgba(0, 0, 0, 0.12)",
   },
+  border: {
+    norm: "rgba(0, 0, 0, 0.23)",
+    field: "rgba(0, 0, 0, 0.23)",
+    weak: "rgba(0, 0, 0, 0.12)",
+  },
   sidebar: {
     bg: '#21263c',
     hover: 'rgba(255, 255, 255, 0.06)',
@@ -150,6 +155,11 @@ export const darkPalette = {
     disabled: "rgba(255, 255, 255, 0.3)",
     disabledBackground: "rgba(255, 255, 255, 0.12)",
     focus: "rgba(255, 255, 255, 0.12)",
+  },
+  border: {
+    norm: "rgba(255, 255, 255, 0.23)",
+    field: "rgba(255, 255, 255, 0.23)",
+    weak: "rgba(255, 255, 255, 0.12)",
   },
   sidebar: {
     bg: '#161a2c',

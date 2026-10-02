@@ -133,7 +133,7 @@ export default function Sidebar() {
             const parentActive = hasActiveChild || (!item.expandable && isActive(item.path, item.activePaths));
 
             const themedIcon = item.icon ? React.cloneElement(item.icon, {
-              size: collapsed ? 24 : 20,
+              size: collapsed ? 20 : 18,
             }) : null;
 
             return (
@@ -241,6 +241,9 @@ export default function Sidebar() {
                                   fontSize: '0.9rem',
                                   fontWeight: parentActive ? 600 : 500,
                                   color: isSolidActive ? activeTextColor : defaultTextColor,
+                                  whiteSpace: 'nowrap',
+                                  overflow: 'hidden',
+                                  textOverflow: 'ellipsis',
                                 },
                               },
                             }}
@@ -296,7 +299,6 @@ export default function Sidebar() {
                                       overflow: 'hidden',
                                       textOverflow: 'ellipsis',
                                       whiteSpace: 'nowrap',
-                                      fontSize: '0.95rem',
                                       fontWeight: 500,
                                     },
                                   },

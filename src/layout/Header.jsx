@@ -47,7 +47,7 @@ export default function Header({ onNotificationClick }) {
         alignItems: 'center',
         justifyContent: 'space-between',
         pr: 2,
-        height: 60,
+        height: 52,
         backgroundColor: headerBg,
         color: headerText,
         borderBottom: `1px solid ${headerDivider}`,
