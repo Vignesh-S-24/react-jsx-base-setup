@@ -8,11 +8,15 @@ import {
   Divider,
   useTheme,
   Skeleton,
+  MenuList,
 } from "@mui/material";
 import KeyboardArrowDownRoundedIcon from "@mui/icons-material/KeyboardArrowDownRounded";
 import MoreVertRoundedIcon from "@mui/icons-material/MoreVertRounded";
 import StarBorderRoundedIcon from "@mui/icons-material/StarBorderRounded";
 import StarRoundedIcon from "@mui/icons-material/StarRounded";
+import CommonSearchBar from "./Fields/SearchBar";
+import CommonTabs from "./Fields/Tabs";
+import CommonDeleteModal from "./DeleteModal";
 
 const DropdownMenu = ({
   options = [],
@@ -126,10 +130,13 @@ const DropdownMenu = ({
       {/* Trigger */}
       <Box
         onClick={handleClick}
-        display="flex"
-        alignItems="center"
-        gap={0.5}
-        sx={{ cursor: "pointer" }}
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          flexWrap: "nowrap",
+          gap: 0.5,
+          cursor: "pointer",
+        }}
       >
         {!selectedLabel ? (
           <Skeleton variant="text" width={150} height={36} animation="wave" />
@@ -151,6 +158,7 @@ const DropdownMenu = ({
             transform: open ? "rotate(180deg)" : "rotate(0deg)",
             transition: "0.2s",
             color: "primary.main",
+            flexShrink: 0,
           }}
         />
       </Box>
@@ -174,7 +182,7 @@ const DropdownMenu = ({
           },
         }}
       >
-        <Box p={1}>
+        <Box sx={{ p: 1 }}>
           <CommonSearchBar
             size="small"
             placeholder="Search Views"
@@ -210,7 +218,8 @@ const DropdownMenu = ({
                 py: 4,
                 px: 2,
                 textAlign: 'center',
-
+                width: '100%',
+                boxSizing: 'border-box',
               }}
             >
               <Typography color="text.secondary" fontSize={14}>
@@ -224,17 +233,21 @@ const DropdownMenu = ({
           ) : (
             ["created", "public"].map((section) =>
               grouped[section]?.length ? (
-                <Box key={section} mt={0.5}>
+                <Box key={section}>
                   <Typography
                     fontSize={13}
                     color="text.secondary"
-                    px={1}
-                    py={0.5}
+
                     sx={{
                       backgroundColor: "primary.extraLight",
                       padding: "4px 8px",
                       borderRadius: "3px",
                       mx: 1,
+                      px: 1,
+                      py: 0.5,
+                      mt: 0.6,
+                      mb: 0.6
+
                     }}
                   >
                     {section === "created"
@@ -242,6 +255,7 @@ const DropdownMenu = ({
                       : "Public Views"}
                   </Typography>
 
+                  <MenuList disablePadding>
                   {grouped[section].map((item) => (
                     <MenuItem
                       key={item.id}
@@ -260,20 +274,39 @@ const DropdownMenu = ({
                         position: "relative",
                         "&.Mui-selected": {
                           bgcolor: "primary.main",
+                          color: "primary.contrastText",
                           "& .MuiTypography-root": {
                             color: "primary.contrastText",
+                            fontWeight: 600,
                           },
-                          "& .MuiSvgIcon-root": {
-                            color: favorites ? "#FFB800" : "primary.contrastText",
+                          "& .MuiIconButton-root, & .MuiSvgIcon-root": {
+                            color: "primary.contrastText !important",
+                          },
+                          "& .favorite-icon": {
+                            opacity: 1,
+                          },
+                          "&:hover": {
+                            bgcolor: "primary.main",
+                            color: "primary.contrastText",
+                            "& .MuiTypography-root": {
+                              color: "primary.contrastText",
+                            },
+                            "& .MuiIconButton-root, & .MuiSvgIcon-root": {
+                              color: "primary.contrastText !important",
+                            },
+                            "& .favorite-icon": {
+                              opacity: 1,
+                            },
                           },
                         },
                         "&:hover": {
-                          bgcolor: "primary.light",
+                          bgcolor: "primary.main",
+                          color: "primary.contrastText",
                           "& .MuiTypography-root": {
                             color: "primary.contrastText",
                           },
-                          "& .MuiSvgIcon-root": {
-                            color: favorites ? "#FFB800" : "primary.contrastText",
+                          "& .MuiIconButton-root, & .MuiSvgIcon-root": {
+                            color: "primary.contrastText !important",
                           },
                           "& .favorite-icon": {
                             opacity: 1,
@@ -281,7 +314,7 @@ const DropdownMenu = ({
                         },
                       }}
                     >
-                      <Box display="flex" gap={0.5}>
+                      <Box sx={{ display: "flex", gap: 0.5, alignItems: "center", overflow: "hidden" }}>
                         <Box
                           className="favorite-icon"
                           onClick={(e) => handleFavoriteClick(e, item.id)}
@@ -290,25 +323,20 @@ const DropdownMenu = ({
                             alignItems: "center",
                             opacity: favorites.includes(item.id) ? 1 : 0,
                             transition: "opacity 0.2s",
-                            "&:hover": {
-                              "& .MuiSvgIcon-root": {
-                                color: "#FFB800",
-                              },
-                            },
                           }}
                         >
                           {favorites.includes(item.id) ? (
                             <StarRoundedIcon
                               sx={{
                                 fontSize: 18,
-                                color: "#FFB800"
+                                color: "#FFB800",
                               }}
                             />
                           ) : (
                             <StarBorderRoundedIcon
                               sx={{
                                 fontSize: 18,
-                                color: "inherit"
+                                color: "inherit",
                               }}
                             />
                           )}
@@ -339,6 +367,7 @@ const DropdownMenu = ({
                       )}
                     </MenuItem>
                   ))}
+                  </MenuList>
                 </Box>
               ) : null
             )
@@ -350,6 +379,7 @@ const DropdownMenu = ({
           <>
             <Divider />
             <Box p={1}>
+              <MenuList disablePadding>
               <MenuItem
                 onClick={() => {
                   footerAction.onClick?.();
@@ -371,6 +401,7 @@ const DropdownMenu = ({
                   {footerAction.label}
                 </Typography>
               </MenuItem>
+              </MenuList>
             </Box>
           </>
         )}
@@ -392,6 +423,7 @@ const DropdownMenu = ({
           },
         }}
       >
+        <MenuList>
         <MenuItem
           onClick={() => {
             onEdit?.(actionItem);
@@ -419,6 +451,7 @@ const DropdownMenu = ({
         >
           Delete
         </MenuItem>
+        </MenuList>
       </Popover>
 
       <CommonDeleteModal

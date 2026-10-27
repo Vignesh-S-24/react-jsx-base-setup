@@ -3,6 +3,7 @@ export const lightPalette = {
   primary: {
     main: "#1976d2",
     light: "#42a5f5",
+    extraLight: "#e3f2fd",
     dark: "#1565c0",
     contrastText: "#ffffff",
   },
@@ -93,6 +94,7 @@ export const darkPalette = {
   primary: {
     main: "#1976d2",
     light: "#42a5f5",
+    extraLight: "#e3f2fd",
     dark: "#1565c0",
     contrastText: "#ffffff",
   },

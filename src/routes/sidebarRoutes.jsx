@@ -3,6 +3,7 @@ import React, { lazy } from "react";
 const ProductVariantsList = lazy(() => import('../pages/Inventory/ProductVariantsList'));
 const Adjustments = lazy(() => import('../pages/Inventory/Adjustments'));
 const Contacts = lazy(() => import('../pages/Sales/Contacts'));
+const ContactDetails = lazy(() => import('../pages/Sales/ContactDetails'));
 const SalesOrders = lazy(() => import('../pages/Sales/SalesOrders'));
 const Invoices = lazy(() => import('../pages/Sales/Invoices'));
 const RecurringInvoices = lazy(() => import('../pages/Sales/RecurringInvoices'));
@@ -34,6 +35,7 @@ export const inventoryRoutes = [
 
 export const salesRoutes = [
   { path: 'contacts', element: <Contacts /> },
+  { path: 'contacts/:id', element: <ContactDetails /> },
   { path: 'salesorders', element: <SalesOrders /> },
   { path: 'invoices', element: <Invoices /> },
   { path: 'recurringinvoices', element: <RecurringInvoices /> },

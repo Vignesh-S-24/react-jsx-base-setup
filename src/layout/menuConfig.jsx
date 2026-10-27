@@ -50,7 +50,7 @@ export const menuItems = [
     activePaths: ['/sales'],
     expandable: true,
     subItems: [
-      { label: 'Customers', path: '/contacts', activePaths: ['/contacts'], addPath: '/contacts/new' },
+      { label: 'Customers', path: '/contacts', activePaths: ['/contacts', '/contacts/'], addPath: '/contacts/new' },
       { label: 'Sales Orders', path: '/salesorders', activePaths: ['/salesorders'], addPath: '/salesorders/new' },
       { label: 'Invoices', path: '/invoices', activePaths: ['/invoices'], addPath: '/invoices/new' },
       { label: 'Recurring Invoices', path: '/recurringinvoices', activePaths: ['/recurringinvoices'], addPath: '/recurringinvoices/new' },

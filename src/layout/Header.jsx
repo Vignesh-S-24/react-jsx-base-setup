@@ -1,21 +1,19 @@
 import {
   Box,
   Typography,
-  InputBase,
   IconButton,
   Avatar,
 } from '@mui/material';
 import {
-  Search as SearchIcon,
   NotificationsNone as NotificationsIcon,
   SettingsOutlined as SettingsIcon,
-  KeyboardArrowDown as KeyboardArrowDownIcon,
   Apps as AppsIcon,
   LightMode as LightModeIcon,
   DarkMode as DarkModeIcon,
 } from '@mui/icons-material';
-import { useTheme, alpha, keyframes } from '@mui/material/styles';
+import { useTheme, keyframes } from '@mui/material/styles';
 import { useThemeMode } from '../context/ThemeModeContext';
+import GlobalSearch from './GlobalSearch';
 
 const spinIn = keyframes`
   from {
@@ -36,9 +34,6 @@ export default function Header({ onNotificationClick }) {
   const headerDivider = theme.palette.header.divider;
   const headerText = theme.palette.header.text;
   const headerTextMuted = theme.palette.header.mutedText;
-
-  const headerSearchBg = theme.palette.header.searchBg;
-  const headerSearchBorder = theme.palette.header.searchBorder;
 
   return (
     <Box
@@ -68,45 +63,7 @@ export default function Header({ onNotificationClick }) {
           </Typography>
         </Box>
 
-        <Box
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            backgroundColor: headerSearchBg,
-            border: `1px solid ${headerSearchBorder}`,
-            borderRadius: 50, 
-            px: 2,
-            py: 0.5,
-            width: 360,
-            ml: 3,
-            transition: 'filter 0.2s',
-            '&:hover': { filter: 'brightness(1.1)' },
-          }}
-        >
-          {/* "All" Dropdown */}
-          <Box sx={{ display: 'flex', alignItems: 'center', cursor: 'pointer', mr: 1 }}>
-            <Typography sx={{ color: headerText, fontSize: '0.85rem' }}>All</Typography>
-            <KeyboardArrowDownIcon sx={{ color: headerTextMuted, fontSize: 18, ml: 0.5 }} />
-          </Box>
-          
-          {/* Vertical Divider */}
-          <Box sx={{ width: '1px', height: '24px', backgroundColor: 'rgba(255, 255, 255, 0.1)', mx: 1 }} />
-
-          {/* Input field */}
-          <InputBase
-            placeholder="Search (cmd + k)"
-            sx={{
-              color: headerText,
-              flex: 1,
-              fontSize: '0.85rem',
-              ml: 1,
-              '& ::placeholder': { color: headerTextMuted, opacity: 1 },
-            }}
-          />
-          
-          {/* Search Icon on the right */}
-          <SearchIcon sx={{ color: headerTextMuted, fontSize: 18 }} />
-        </Box>
+        <GlobalSearch sx={{ ml: 3 }} />
       </Box>
 
       {/* Right section */}

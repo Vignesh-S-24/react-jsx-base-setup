@@ -95,7 +95,7 @@ const statusColors = {
   plan_change: SIGNAL_RECIPES.info,
 };
 
-const NDEStatusBadge = ({ status, size = "medium", label, sx, ...props }) => {
+const StatusBadge = ({ status, size = "medium", label, sx, ...props }) => {
   const getSafeStatus = (val) => {
     if (val && typeof val === "object") {
       return val.name || val.title || val.symbol || val.code || "Unknown";
@@ -153,4 +153,4 @@ const NDEStatusBadge = ({ status, size = "medium", label, sx, ...props }) => {
   );
 };
 
-export default NDEStatusBadge;
+export default StatusBadge;

@@ -50,7 +50,7 @@ const MemoizedTableRow = memo(
               position: 'sticky',
               left: 0,
               zIndex: 2,
-              backgroundColor: theme => theme.palette.background.paper,
+              backgroundColor: 'transparent',
               boxShadow: isScrolled ? '4px 0 8px -2px rgba(0,0,0,0.10)' : 'none',
               transition: 'background-color 0.15s ease, box-shadow 0.2s ease',
             }}
@@ -84,7 +84,7 @@ const MemoizedTableRow = memo(
                     position: 'sticky',
                     left: showCustomize ? '30px' : 0,
                     zIndex: 2,
-                    backgroundColor: theme => theme.palette.background.paper,
+                    backgroundColor: 'transparent',
                     boxShadow: isScrolled ? '4px 0 8px -2px rgba(0,0,0,0.10)' : 'none',
                     transition: 'background-color 0.15s ease, box-shadow 0.2s ease',
                   }
